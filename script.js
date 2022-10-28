@@ -29,11 +29,11 @@ class Library {
   }
 
   getBook(title) {
-    return this.books.find((book) => book.title === title);
+    return this.myLibrary.find((book) => book.title === title);
   }
 
   isInLibrary(newBook) {
-    return this.books.some((book) => book.title === newBook.title);
+    return this.myLibrary.some((book) => book.title === newBook.title);
   }
 }
 
@@ -48,13 +48,12 @@ const getBookFromInput = () => {
   const author = document.getElementById("author").value;
   const pages = document.getElementById("pages").value;
   const isRead = document.getElementById("isRead").checked;
+
   return new Book(title, author, pages, isRead);
 };
 
-const addBook = (e) => {
-  e.preventDefault();
+const addBook = () => {
   const newBook = getBookFromInput();
-  console.log(newBook);
 
   if (library.isInLibrary(newBook)) {
     console.log("book already exists");
@@ -64,6 +63,12 @@ const addBook = (e) => {
     //update books grid
   }
   closeModal();
+  console.log(library.myLibrary);
+};
+
+const bookInfo = document.getElementById("submitBookInfo");
+bookInfo.onclick = () => {
+  addBook();
 };
 
 // UI
@@ -84,5 +89,3 @@ window.onclick = function (event) {
 const closeModal = () => {
   modal.style.display = "none";
 };
-
-console.log(library.myLibrary);

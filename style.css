@@ -76,7 +76,7 @@ footer {
   background-color: rgba(0, 0, 0, 0.4);
 }
 
-#addBookForm {
+#addBookContainer {
   position: relative; /* Vertical Center Modal */
   top: 50%;
   transform: translateY(-50%);
@@ -93,7 +93,7 @@ footer {
   align-items: center;
 }
 
-#addBookForm h2 {
+#addBookContainer h2 {
   margin-bottom: 20px;
 }
 
@@ -131,8 +131,7 @@ footer {
   transform: scale(1.2);
 }
 
-input[type="submit"] {
-  border: none;
+#submitBookInfo {
   margin-top: 25px;
   background-color: green;
   color: white;
