@@ -39,6 +39,9 @@ class Library {
 
 const library = new Library();
 
+// Create book card
+const createBookCard = () => {};
+
 // Retrieve book from input
 const getBookFromInput = () => {
   const title = document.getElementById("title").value;
@@ -50,6 +53,17 @@ const getBookFromInput = () => {
 
 const addBook = (e) => {
   e.preventDefault();
+  const newBook = getBookFromInput();
+  console.log(newBook);
+
+  if (library.isInLibrary(newBook)) {
+    console.log("book already exists");
+    return;
+  } else {
+    library.addBookToLibrary(newBook);
+    //update books grid
+  }
+  closeModal();
 };
 
 // UI
@@ -63,6 +77,12 @@ addBookBtn.onclick = () => {
 // When user clicks anywhere outside modal, close it
 window.onclick = function (event) {
   if (event.target == modal) {
-    modal.style.display = "none";
+    closeModal();
   }
 };
+
+const closeModal = () => {
+  modal.style.display = "none";
+};
+
+console.log(library.myLibrary);
