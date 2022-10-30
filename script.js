@@ -48,26 +48,26 @@ const getBookFromInput = () => {
   return new Book(title, author, pages, isRead);
 };
 
+const bookInfo = document.getElementById("submitBookInfo");
+bookInfo.onclick = () => {
+  addBook();
+};
+
 const addBook = () => {
   const newBook = getBookFromInput();
-
   if (library.isInLibrary(newBook)) {
-    console.log("book already exists");
+    alert("This book already exists in your library.");
     return;
   } else {
     library.addBookToLibrary(newBook);
     addBookCards(newBook);
   }
   closeModal();
-  // createBookCard(library.myLibrary);
-};
-
-const bookInfo = document.getElementById("submitBookInfo");
-bookInfo.onclick = () => {
-  addBook();
 };
 
 const bookContainerGrid = document.getElementById("bookContainerGrid");
+let isReadBtn = null;
+
 const addBookCards = (newBook) => {
   const newDiv = document.createElement("div");
   newDiv.id = "bookCard";
@@ -82,9 +82,23 @@ const addBookCards = (newBook) => {
   const pagesDiv = document.createElement("div");
   pagesDiv.appendChild(document.createTextNode(newBook.pages + " pages"));
 
+  const isReadButton = document.createElement("button");
+  isReadButton.id = "isReadBtn";
+  newBook.isRead
+    ? (isReadButton.className = "isReadBtnGreen")
+    : (isReadButton.className = "isReadBtnRed");
+
+  isReadButton.className == "isReadBtnGreen"
+    ? isReadButton.appendChild(document.createTextNode("Read"))
+    : isReadButton.appendChild(document.createTextNode("Not Read"));
+
+  isReadBtn = document.getElementById("isReadBtn");
+  console.log("isreadbtn", isReadBtn);
+
   newDiv.appendChild(titleDiv);
   newDiv.appendChild(authorDiv);
   newDiv.appendChild(pagesDiv);
+  newDiv.appendChild(isReadButton);
 };
 
 // UI
@@ -97,7 +111,7 @@ addBookBtn.onclick = () => {
 
 // When user clicks anywhere outside modal, close it
 window.onclick = function (event) {
-  if (event.target == modal) {
+  if (event.target === modal) {
     closeModal();
   }
 };
@@ -105,3 +119,12 @@ window.onclick = function (event) {
 const closeModal = () => {
   modal.style.display = "none";
 };
+
+if (isReadBtn) {
+  isReadBtn.onclick = () => {
+    console.log("clicked");
+    isReadBtn.className === "isReadBtnGreen"
+      ? (isReadBtn.className = "isReadBtnRed")
+      : (isReadBtn.className = "isReadBtnGreen");
+  };
+}

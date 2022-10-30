@@ -141,3 +141,32 @@ footer {
   font-size: 18px;
   cursor: pointer;
 }
+
+/* Book Card */
+.isReadBtnGreen {
+  font-family: inherit;
+  font-size: inherit;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: rgb(173, 251, 173);
+}
+
+.isReadBtnGreen:hover {
+  cursor: pointer;
+  background-color: rgb(138, 204, 138);
+}
+
+.isReadBtnRed {
+  font-family: inherit;
+  font-size: inherit;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: rgb(251, 173, 173);
+}
+
+.isReadBtnRed:hover {
+  cursor: pointer;
+  background-color: rgb(204, 138, 138);
+}
