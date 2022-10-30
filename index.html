@@ -21,9 +21,9 @@
             max="21450"
             placeholder="Pages"
           />
-          <label id="isRead" for=""
+          <label class="is-read" for=""
             >I've read this book
-            <input type="checkbox" />
+            <input id="isRead" type="checkbox" />
           </label>
           <button id="submitBookInfo">Submit</button>
         </div>
@@ -34,9 +34,7 @@
     </header>
     <div class="main-container">
       <button id="add-book-btn">+ Add book</button>
-      <div class="book-container-grid">
-        <div class="book-entry">Book</div>
-      </div>
+      <div id="bookContainerGrid"></div>
     </div>
     <footer>Copyright © 2022 a1exanderz</footer>
     <script src="script.js"></script>

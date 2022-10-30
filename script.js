@@ -39,16 +39,12 @@ class Library {
 
 const library = new Library();
 
-// Create book card
-const createBookCard = () => {};
-
 // Retrieve book from input
 const getBookFromInput = () => {
   const title = document.getElementById("title").value;
   const author = document.getElementById("author").value;
   const pages = document.getElementById("pages").value;
   const isRead = document.getElementById("isRead").checked;
-
   return new Book(title, author, pages, isRead);
 };
 
@@ -60,15 +56,35 @@ const addBook = () => {
     return;
   } else {
     library.addBookToLibrary(newBook);
-    //update books grid
+    addBookCards(newBook);
   }
   closeModal();
-  console.log(library.myLibrary);
+  // createBookCard(library.myLibrary);
 };
 
 const bookInfo = document.getElementById("submitBookInfo");
 bookInfo.onclick = () => {
   addBook();
+};
+
+const bookContainerGrid = document.getElementById("bookContainerGrid");
+const addBookCards = (newBook) => {
+  const newDiv = document.createElement("div");
+  newDiv.id = "bookCard";
+  bookContainerGrid.appendChild(newDiv);
+
+  const titleDiv = document.createElement("div");
+  titleDiv.appendChild(document.createTextNode(newBook.title));
+
+  const authorDiv = document.createElement("div");
+  authorDiv.appendChild(document.createTextNode(newBook.author));
+
+  const pagesDiv = document.createElement("div");
+  pagesDiv.appendChild(document.createTextNode(newBook.pages + " pages"));
+
+  newDiv.appendChild(titleDiv);
+  newDiv.appendChild(authorDiv);
+  newDiv.appendChild(pagesDiv);
 };
 
 // UI
